@@ -1,6 +1,7 @@
 import requests
 
-url = "http://127.0.0.1:8501/predict"
+# url = "http://127.0.0.1:8501/predict"
+url = "https://bank-customer-churn-q0y7.onrender.com/predict"
 data = {
     'credit_score': 619,
     'country': 'France',
@@ -17,16 +18,11 @@ data = {
 response = requests.post(url, json=data)
 
 print("Response Status Code:", response.status_code)
+print(response.text)
+
 print(response.json())
 
 if response.json()['prediction'] == 0:
     print('Customer has not churned (not left the bank)')
 else:
     print('Customer has churned (left the bank)')
-
-
-# docker build -t ai-project .
-# docker run -p 8501:8501 ai-project
-
-
-
