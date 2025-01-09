@@ -16,10 +16,6 @@ data = {
 }
 
 response = requests.post(url, json=data)
-
-print("Response Status Code:", response.status_code)
-print(response.text)
-
 print(response.json())
 
 if response.json()['prediction'] == 0:
